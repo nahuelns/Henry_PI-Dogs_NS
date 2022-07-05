@@ -1,0 +1,42 @@
+
+
+#card {
+    display: block;
+    align-content: center;
+    border: none;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.555);
+    padding: 5px    ;
+    width: 230px;
+    height: 330px;
+    margin: 22px;
+    float: left;       
+}
+#imgCard{
+    margin-left: 50px;
+    width: 140px;
+    max-height: 200px;
+    border-radius: 4px;
+    box-shadow: 0px 0px  4px black;
+    
+}
+
+#tittleCard{
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+    padding: 5px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h4{
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    font-size: 13px;
+    padding: 5px;
+    font-family: monospace;
+}
+
+

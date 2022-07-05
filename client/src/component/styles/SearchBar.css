@@ -1,0 +1,33 @@
+
+.button{
+  margin-top: 4px;
+  height: 23px;
+  border: 2px solid black;
+  background-color: rgb(255, 166, 0) ;
+  border-radius: 8px;
+  width: 100px;
+  font-size:medium;
+  border-width: 2px;
+  cursor: pointer;
+    
+  }
+  
+.input{
+    
+    color: black;
+    height: 18px;
+    border-radius: 5px;
+    
+}
+.input:focus{
+  border-radius: 8px;
+  background-color: white;
+  
+  border-color: white;
+}
+.input:hover{
+  border-radius: 8px;
+  background-color: #60e5e1ba;
+  color: black;
+  border-color: white;
+}

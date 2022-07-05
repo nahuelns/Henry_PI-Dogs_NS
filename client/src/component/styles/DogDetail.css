@@ -1,0 +1,55 @@
+#cardDetail {
+    
+    display: block;
+    margin-top: 70px;
+    margin-left: 300px;
+    border: none;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.555);
+    width: 800px;
+    height: 600px;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    
+    
+       
+}
+#imgDetail{
+    width: 300px;
+    border-radius: 4px;
+    box-shadow: 0px 0px  4px black;
+    
+}
+
+.mainTittle{
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+p{
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: 13px;
+    padding: 1px;
+    font-family: monospace;
+}
+
+#btn1{
+    height: 25px;
+    background-color: rgb(255, 166, 0) ;
+    border-radius: 8px;
+    width: 60px;
+    font-size:medium;
+    border-width: 2px;
+    cursor: pointer;
+    color: black;    
+}
+

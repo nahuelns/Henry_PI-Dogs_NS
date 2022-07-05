@@ -1,0 +1,16 @@
+#paginado{
+display: inline-block;
+margin-left: 400px;
+
+}
+
+#btnPag{
+    margin-left: 10px;
+    margin-bottom: 25px;
+    height: 30px;
+    width: 30px;
+    border-radius: 100px;
+    background-color: rgb(255, 166, 0);
+    border: 2px solid black;
+   
+}
