@@ -3,22 +3,32 @@ import "./styles/DogDetail.css";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getDogDetail } from "../actions/actions";
-import { Link } from "react-router-dom";
+import { getDogDetail, deleteDog } from "../actions/actions";
+import { Link, useHistory } from "react-router-dom";
 import imagDogDefault from '../images/dogDefault.jpg';
 import temperamentCard from "../function/funcionTemp";
 
 export default function Detail() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const { id } = useParams();
 
   useEffect(() => {
     dispatch(getDogDetail(id));
-  }, [dispatch, id]);
-  
+}, [dispatch, id])
 
   const dogAllDetail = useSelector((state) => state.dogDetail);
 
+  function handleDelete(e) {
+    if (id.length > 5) {
+        e.preventDefault()
+        dispatch(deleteDog(id))
+        alert('Raza eliminada')
+        history.push('/home')
+    }else{
+        alert('Solo podemos eliminar las razas creadas por usted.')
+    }
+}
   console.log(dogAllDetail);
 
   return (
@@ -32,11 +42,12 @@ export default function Detail() {
         <p>Altura min: {dogAllDetail.heightMin}</p>
         <p>Peso max: {dogAllDetail.weightMax}</p>
         <p>Peso min: {dogAllDetail.weightMin}</p>
-        <p>Promedio de vida: {dogAllDetail.life_span}</p>
+        <p>Promedio de vida en años: {dogAllDetail.life_span_min} - {dogAllDetail.life_span_max}</p>
       </div>
       <Link to="/home">
-        <button id='btn1'>Back</button>
+       <button className="btnDetail" onClick={(e) => handleDelete(e)}>Borrar</button> 
+        <button className='btnDetail'>Back</button>
       </Link>
     </div>
   );
-}
+} 

@@ -23,9 +23,10 @@ function rootReducer(state = initialState, action) {
             }
 
         case 'FILTER_BY_TEMPERAMENT':
-            const newDog = state.allDogs
 
+            const newDog = state.allDogs.filter(e => e.temperaments);
             const filteredByTypes = newDog.filter(el => {
+
                 if (typeof (el.temperaments) === 'string') {
                     return el.temperaments.includes(action.payload);
                 }
@@ -116,6 +117,12 @@ function rootReducer(state = initialState, action) {
             return {
                 ...state,
             }
+
+        case 'DELETED_DOG':
+            return {
+                    ...state,
+                }
+            
 
         default:
             return state

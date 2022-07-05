@@ -27,7 +27,7 @@ export default function Home() {
   const [order, setOrder] = useState("");
 
   const [page, setPage] = useState(1);
-  const [dogsxPage, setDogsxPage] = useState(12);
+  const [dogsxPage, setDogsxPage] = useState(8);
   const indice = page * dogsxPage;
 
   const indiceFinal = indice - dogsxPage;
@@ -143,6 +143,8 @@ export default function Home() {
                 image={e.image}
                 temperaments={e.temperaments}
                 id={e.id}
+                weightMax= {e.weightMax}
+                weightMin= {e.weightMin}
               />
             </Link>
           </div>

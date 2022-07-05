@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { createDogs, getAllTemperament } from "../actions/actions";
 import { useDispatch, useSelector } from 'react-redux'
 import "./styles/DogCreate.css";
@@ -63,8 +63,12 @@ function validate(input) {
         errors.weightMin = 'Peso min debe ser menor que altura max'
     }
 
-    else if (!input.life_span) {
-        errors.life_span = 'Esperanza de vida es un campo obligatorio'
+    else if (!input.life_span_min) {
+        errors.life_span_min = 'Esperanza de vida min es un campo obligatorio'
+    }
+
+    else if (!input.life_span_max) {
+        errors.life_span_max = 'Esperanza de vida max es un campo obligatorio'
     }
 
     return errors
@@ -73,6 +77,7 @@ function validate(input) {
 export default function CreateDog(){
 
     const dispatch = useDispatch();
+    const history = useHistory();
     const allTemp = useSelector((state) => state.allTemperament)
     const [errors, setErrors] = useState({})
     const [input, setInput] = useState({
@@ -81,7 +86,8 @@ export default function CreateDog(){
         heightMax: '',
         weightMin: '',
         weightMax: '',
-        life_span: '',
+        life_span_min: '',
+        life_span_max: '',
         image: '',
         temperaments: [],
     });
@@ -113,7 +119,7 @@ export default function CreateDog(){
 
     function handleSubmit(e) {
         e.preventDefault()
-        if (!Object.getOwnPropertyNames(errors).length && input.name && input.heightMin && input.heightMax && input.weightMin && input.weightMax && input.life_span /*&& input.temperaments.length*/ /*&& input.origins.length*/) {
+        if (!Object.getOwnPropertyNames(errors).length && input.name && input.heightMin && input.heightMax && input.weightMin && input.weightMax && input.life_span_min && input.life_span_max) {
 
             if (!input.image) {
                 input.image = 'img';
@@ -126,11 +132,13 @@ export default function CreateDog(){
                 heightMax: '',
                 weightMin: '',
                 weightMax: '',
-                life_span: '',
+                life_span_min: '',
+                life_span_max: '',
                 image: '',
                 temperaments: [],
                
             })
+            history.push('/home');
         } else {
             alert('Dog not created')
         }
@@ -149,6 +157,7 @@ export default function CreateDog(){
     <h1 className="title">Crea tu Dog</h1>
     <form onSubmit={e => handleSubmit(e)} id='form'>
         <ul>
+            
             <li>
                 <label>Raza: </label>
                 <input type="text" value={input.name} name='name' onChange={e => handleChange(e)}/>
@@ -190,14 +199,20 @@ export default function CreateDog(){
             </li>
 
             <li>
-                <label>Promedio de Vida en años: </label>
-                <input type="text" value={input.life_span} name='life_span' onChange={e => handleChange(e)}/>
-                {errors.life_span && (
-                        <p className="error">{errors.life_span}</p>
+                <label>Promedio de Vida en años (min): </label>
+                <input type="text" value={input.life_span_min} name='life_span_min' onChange={e => handleChange(e)}/>
+                {errors.life_span_min && (
+                        <p className="error">{errors.life_span_min}</p>
                     )}
             </li>
 
-            
+            <li>
+                <label>Promedio de Vida en años (max): </label>
+                <input type="text" value={input.life_span_max} name='life_span_max' onChange={e => handleChange(e)}/>
+                {errors.life_span_max && (
+                        <p className="error">{errors.life_span_max}</p>
+                    )}
+            </li>
 
             <li>
                 <select onChange={e => handleSelect(e)} id="temp">

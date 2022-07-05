@@ -60,15 +60,15 @@ export function searchByName(name) {
     return async function (dispatch) {
         try {
             var dogsByName = await axios.get(`http://localhost:3001/dogs?name=${name}`)
-        return dispatch(
-            {
-                type: 'GET_BY_NAME',
-                payload: dogsByName.data,
-            })
+            return dispatch(
+                {
+                    type: 'GET_BY_NAME',
+                    payload: dogsByName.data,
+                })
         } catch (error) {
             console.log(error)
         }
-        
+
     }
 }
 
@@ -100,7 +100,20 @@ export function createDogs(payload) {
             console.log(error)
         }
 
-    }}
+    }
+}
 
+export function deleteDog(id) {
+    return async function (dispatch) {
+        try {
+            const deleteDog = await axios.delete(`http://localhost:3001/dogs/${id}`);
+            return dispatch({
+                type: 'DELETED_DOG',
+                payload: deleteDog.data,
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    };
+}
 
-    

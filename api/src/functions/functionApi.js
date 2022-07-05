@@ -18,7 +18,8 @@ const getAllDogsApi = async (name) => {
                 heightMax: e.height.metric.split(' - ')[1],
                 weightMin: e.weight.metric.split(' - ')[0],
                 weightMax: e.weight.metric.split(' - ')[1],
-                life_span: e.life_span,
+                life_span_min: e.life_span.split(' - ')[0],
+                life_span_max: e.life_span.split(' - ')[1],
                 
             }))
             return allDogsFilter;
@@ -36,7 +37,10 @@ const getAllDogsApi = async (name) => {
                 heightMax: e.height.metric.split(' - ')[1],
                 weightMin: e.weight.metric.split(' - ')[0],
                 weightMax: e.weight.metric.split(' - ')[1],
-                life_span: e.life_span,
+                life_span_min: e.life_span.split(' - ')[0],
+                life_span_max: e.life_span.split(' - ')[1],
+
+
             }))
 
     

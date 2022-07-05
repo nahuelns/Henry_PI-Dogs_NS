@@ -75,7 +75,7 @@ router.get('/:id', async (req, res, next) => {
 })
 
 router.post('/', async(req,res,next) => {
-    const { name, temperaments, heightMin, heightMax, weightMin, weightMax, life_span } = req.body
+    const { name, temperaments, heightMin, heightMax, weightMin, weightMax, life_span_min, life_span_max } = req.body
     try {
         const newDog = await Race.create({
             name:name.replace(/(^\w{1})|(\s+\w{1})/g, letra => letra.toUpperCase()), //Cambia la primer letra a mayuscula.
@@ -84,7 +84,8 @@ router.post('/', async(req,res,next) => {
             heightMax,
             weightMin,
             weightMax,
-            life_span,
+            life_span_min,
+            life_span_max,
         })
         const newTemprament = await Temperament.findAll({
             where: {name: temperaments}
@@ -97,6 +98,20 @@ router.post('/', async(req,res,next) => {
         next(error)
     }
 })
+
+router.delete("/:id", async function (req, res) {
+    const { id } = req.params;
+    try {
+      if (id) {
+        await Race.destroy({
+          where: { id: id },
+        });
+        res.send({ msg: "Dog deleted" });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  });
 
 
 module.exports = router;
