@@ -8,8 +8,8 @@ export default function LandingPage(){
         <div className='landing'>
             <h1 className='tittle' >Welcome to the Dog's World</h1>
             <Link to='/home'>
-                <button className='btn'>Ingresar</button>
+                <button className='btn'>Start</button>
             </Link>
         </div>
     )
-}
+}   

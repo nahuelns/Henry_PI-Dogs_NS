@@ -47,6 +47,8 @@
     width:300px;
 }
 #form ul li input{
+    font-size: 15px;
+    font-family: monospace;
     width: 220px;
 }
 

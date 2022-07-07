@@ -55,8 +55,8 @@ function validate(input) {
         errors.weightMax = 'Peso max es un campo obligatorio'
     }
 
-    else if (input.weightMax > 150) {
-        errors.heightMax = 'Peso max debe ser < 150'
+    else if (input.weightMax > 90) {
+        errors.heightMax = 'Peso max debe ser < 90'
     }
 
     else if (parseInt(input.weightMin) >= parseInt(input.weightMax)) {
@@ -105,7 +105,6 @@ export default function CreateDog(){
             ...input,
             [e.target.name]: e.target.value,
         }))
-        console.log(input)
     }
 
     function handleSelect(e) {
@@ -113,14 +112,13 @@ export default function CreateDog(){
             setInput({
                 ...input,
                 temperaments: [...input.temperaments, e.target.value]
-            })
-            console.log(input)  
+            }) 
     }
 
     function handleSubmit(e) {
         e.preventDefault()
         if (!Object.getOwnPropertyNames(errors).length && input.name && input.heightMin && input.heightMax && input.weightMin && input.weightMax && input.life_span_min && input.life_span_max) {
-
+            
             if (!input.image) {
                 input.image = 'img';
             }
@@ -140,7 +138,8 @@ export default function CreateDog(){
             })
             history.push('/home');
         } else {
-            alert('Dog not created')
+            
+            alert('Tu Dog no ha sido creado, revisa tu formulario.')
         }
     }
     function handleDelete (event) {
@@ -176,7 +175,7 @@ export default function CreateDog(){
 
             <li>
                 <label>Altura maxima en cm: </label>
-                <input type="text" value={input.heightMax} name='heightMax' onChange={e => handleChange(e)}/>
+                <input type="text"  value={input.heightMax} name='heightMax' onChange={e => handleChange(e)}/>
                 {errors.heightMax && (
                         <p className="error">{errors.heightMax}</p>
                     )}
@@ -243,7 +242,7 @@ export default function CreateDog(){
         </ul>
         <div className="containerButton">
         <Link to='/home'><button className="btn1">Back</button></Link>
-        <button type="submit" className="btn1" ><strong>Crear</strong></button>
+        <button type="submit" className="btn1" id='btnCrear'><strong>Crear</strong></button>
         </div>
 
     </form>

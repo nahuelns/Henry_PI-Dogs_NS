@@ -1,7 +1,8 @@
 import React from "react";
 import "./styles/Home.css";
 import "./styles/Nav.css";
-import gif from "../images/dog-loading.gif"
+import dog_not_found from "../images/dog-loading.gif"
+import gif_loading from "../images/Color-Loading-2.gif"
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -21,6 +22,7 @@ import {
 export default function Home() {
   const dispatch = useDispatch();
   const allDogs = useSelector((state) => state.dogs);
+  const allDogsLoad = useSelector((state) => state.allDogs)
   const allTemperaments = useSelector((state) => state.allTemperament);
 
   //-------- Paginado ----------//
@@ -73,14 +75,25 @@ export default function Home() {
     setPage(1);
     setOrder(e.target.value);
   }
+
+  function handleClick(e) {
+    e.preventDefault();
+    dispatch(getAllDogs())
+}
   return (
     
     <div>
-     {!allDogs ? <img className="gifLoad" src={gif} alt='imgLoad'/> : 
+     {!allDogsLoad.length ?  
+        <div className="loading"> 
+        <img className="loadingImg" src={gif_loading} alt="not found"/>
+    </div> :
       <div>
       <nav id="nav">
         <h1 id="tittleHome">The Dog's World</h1>
         <ul>
+          <li>
+          <button className='btnDetail2' onClick={e => { handleClick(e) }}>Refresh</button>
+          </li>
           <li>
             <Link to="/dogs">
               <button id="crear">Crear Perro</button>
@@ -106,22 +119,22 @@ export default function Home() {
               className="filNav"
             >
               <option value={"allApi"}>Order</option>
-              <option value={"des"}>Descendentemente</option>
-              <option value={"asc"}>Ascendentemente</option>
+              <option value={"des"}>Z-A</option>
+              <option value={"asc"}>A-Z</option>
             </select>
           </li>
           <li>
             <select onChange={(e) => handleSortByWeight(e)} className="filNav">
               <option value="selected" hidden>
-                Ordenado por Peso
+                Weight
               </option>
-              <option value="asc">Mas Livianos</option>
               <option value="desc">Mas Pesados</option>
+              <option value="asc">Mas Livianos</option>
             </select>
           </li>
           <li>
             <select onChange={(e) => handleFilterOrigin(e)} className="filNav">
-              <option value="all">Mostrar por origen</option>
+              <option value="all">Origin</option>
               <option value="api">DogsApi</option>
               <option value="created">DogsDb</option>
             </select>
@@ -129,6 +142,7 @@ export default function Home() {
           <li>
             <SearchBar />
           </li>
+
         </ul>
         <div class="clearfix"></div>
       </nav>
@@ -138,7 +152,10 @@ export default function Home() {
         allDogs={allDogs.length}
         pagina={pagina}
       />
-      {currentPage.map((e) => {
+     
+
+      { currentPage.length?
+      currentPage.map((e) => {
         return (
           <div>
             <Link to={`/home/${e.id}`}>
@@ -153,9 +170,15 @@ export default function Home() {
             </Link>
           </div>
         );
-      })}
+      }):<div className="errorFound">
+      <h1 className="dogNotFpund">Sorry!, dog not found</h1>
+       <img className="imgNotFound" src={dog_not_found} alt= 'dog_not_found'/>
+       <button className='btnDetail1' onClick={e => { handleClick(e) }}>Back</button>
+  </div>
+  }
     </div>
     }
     </div>
   );
 }
+
