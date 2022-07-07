@@ -16,10 +16,7 @@ router.get('/', async (req, res, next) => {
 
     let finalTempetament = element.split(', ')
 
-    const dataArr = new Set(finalTempetament);
-
-    let resultTemperament = [...dataArr];
-
+    const resultTemperament = [...new Set(finalTempetament)];
 
     resultTemperament.map((e) => {Temperament.findOrCreate({
         where: {name: e}

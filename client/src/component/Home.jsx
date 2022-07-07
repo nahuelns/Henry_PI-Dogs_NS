@@ -1,6 +1,7 @@
 import React from "react";
 import "./styles/Home.css";
 import "./styles/Nav.css";
+import gif from "../images/dog-loading.gif"
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -73,7 +74,10 @@ export default function Home() {
     setOrder(e.target.value);
   }
   return (
+    
     <div>
+     {!allDogs ? <img className="gifLoad" src={gif} alt='imgLoad'/> : 
+      <div>
       <nav id="nav">
         <h1 id="tittleHome">The Dog's World</h1>
         <ul>
@@ -150,6 +154,8 @@ export default function Home() {
           </div>
         );
       })}
+    </div>
+    }
     </div>
   );
 }

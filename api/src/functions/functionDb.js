@@ -11,7 +11,7 @@ const getAllDogsDb = async (name) => {
             return await Race.findAll({
                 include: { model: Temperament, attributes: ['name'], through: { attributes: [] } }
             })
-        }
+        } 
         else{
 
             return await Race.findAll({
@@ -30,11 +30,6 @@ const getAllDogsDb = async (name) => {
            })
       
           }
-
-
-
-
-
     } catch (error) {
         console.log(error)
     }
