@@ -71,6 +71,10 @@ function validate(input) {
         errors.life_span_max = 'Esperanza de vida max es un campo obligatorio'
     }
 
+    else if (parseInt(input.life_span_min) >= parseInt(input.life_span_max)) {
+        errors.life_span_min = 'Esperanza de vida min debe ser menor que Esperanza de vida max'
+    }
+
     return errors
 }
 
@@ -153,12 +157,12 @@ export default function CreateDog(){
 
     <div className="createDog">
     
-    <h1 className="title">Crea tu Dog</h1>
+    <h1 className="title">Create your Dog</h1>
     <form onSubmit={e => handleSubmit(e)} id='form'>
         <ul>
             
             <li>
-                <label>Raza: </label>
+                <label>Race: </label>
                 <input type="text" value={input.name} name='name' onChange={e => handleChange(e)}/>
                 {errors.name && (
                         <p className="error">{errors.name}</p>
@@ -166,7 +170,7 @@ export default function CreateDog(){
             </li>
 
             <li>
-                <label>Altura minima en cm: </label>
+                <label>Height min (Cm): </label>
                 <input type="text" value={input.heightMin} name='heightMin' onChange={e => handleChange(e)}/>
                 {errors.heightMin && (
                         <p className="error">{errors.heightMin}</p>
@@ -174,7 +178,7 @@ export default function CreateDog(){
             </li>
 
             <li>
-                <label>Altura maxima en cm: </label>
+                <label>Height max (Cm): </label>
                 <input type="text"  value={input.heightMax} name='heightMax' onChange={e => handleChange(e)}/>
                 {errors.heightMax && (
                         <p className="error">{errors.heightMax}</p>
@@ -182,7 +186,7 @@ export default function CreateDog(){
             </li>
 
             <li>
-                <label>Peso minimo en Kg: </label>
+                <label>Weight min (Kg): </label>
                 <input type="text" value={input.weightMin} name='weightMin' onChange={e => handleChange(e)}/>
                 {errors.weightMin && (
                         <p className="error">{errors.weightMin}</p>
@@ -190,7 +194,7 @@ export default function CreateDog(){
             </li>
 
             <li>
-                <label>Peso maximo en Kg: </label>
+                <label>Weight max (Kg): </label>
                 <input type="text" value={input.weightMax} name='weightMax' onChange={e => handleChange(e)}/>
                 {errors.weightMax && (
                         <p className="error">{errors.weightMax}</p>
@@ -198,7 +202,7 @@ export default function CreateDog(){
             </li>
 
             <li>
-                <label>Promedio de Vida en años (min): </label>
+                <label>Life expectancy in years (min): </label>
                 <input type="text" value={input.life_span_min} name='life_span_min' onChange={e => handleChange(e)}/>
                 {errors.life_span_min && (
                         <p className="error">{errors.life_span_min}</p>
@@ -206,7 +210,7 @@ export default function CreateDog(){
             </li>
 
             <li>
-                <label>Promedio de Vida en años (max): </label>
+                <label>Life expectancy in years (max): </label>
                 <input type="text" value={input.life_span_max} name='life_span_max' onChange={e => handleChange(e)}/>
                 {errors.life_span_max && (
                         <p className="error">{errors.life_span_max}</p>
@@ -215,7 +219,7 @@ export default function CreateDog(){
 
             <li>
                 <select onChange={e => handleSelect(e)} id="temp">
-                    <option value='selected' hidden >Temperamentos</option>
+                    <option value='selected' hidden >Temperaments</option>
                     {allTemp?.sort(function (a, b) {
                         if (a.name < b.name) return -1
                         if (a.name > b.name) return 1
@@ -235,7 +239,6 @@ export default function CreateDog(){
               <button onClick={()=>handleDelete(e)} className='btn3'>X</button>
               </h5>
             </div>
-
           )}
             </li>
 

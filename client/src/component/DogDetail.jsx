@@ -38,11 +38,11 @@ export default function Detail() {
       
       <div>
         {dogAllDetail.temperaments ? <p>Temperaments: {temperamentCard(dogAllDetail.temperaments)}</p>:<p>Temperaments not found</p>}
-        <p>Altura max: {dogAllDetail.heightMax}</p>
-        <p>Altura min: {dogAllDetail.heightMin}</p>
-        <p>Peso max: {dogAllDetail.weightMax}</p>
-        <p>Peso min: {dogAllDetail.weightMin}</p>
-        <p>Promedio de vida en años: {dogAllDetail.life_span_min} - {dogAllDetail.life_span_max}</p>
+        <p>Height max: {dogAllDetail.heightMax}</p>
+        <p>Height min: {dogAllDetail.heightMin}</p>
+        <p>Weight max: {dogAllDetail.weightMax}</p>
+        <p>Weight min: {dogAllDetail.weightMin}</p>
+        <p>Life expectancy in years: {dogAllDetail.life_span_min} - {dogAllDetail.life_span_max}</p>
       </div>
       <Link to="/home">
        <button className="btnDetail" onClick={(e) => handleDelete(e)}>Borrar</button> 

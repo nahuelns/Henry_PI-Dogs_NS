@@ -23,8 +23,8 @@ export default function SearchDog() {
   
   return (
     <div className="search">
-        <input className="input" type="text" placeholder="Encuentra tu dog" onChange={(e)=>handleOnChange(e)}  />
-        <button className="button"  type="submit" onClick={(e)=> onSubmit(e)}>Buscar</button>
+        <input className="input" type="text" placeholder="Find your dog" onChange={(e)=>handleOnChange(e)}  />
+        <button className="button"  type="submit" onClick={(e)=> onSubmit(e)}>Search</button>
     </div>
   );
 }

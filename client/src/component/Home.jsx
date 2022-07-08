@@ -25,9 +25,9 @@ export default function Home() {
   const allDogsLoad = useSelector((state) => state.allDogs)
   const allTemperaments = useSelector((state) => state.allTemperament);
 
-  //-------- Paginado ----------//
-
   const [order, setOrder] = useState("");
+
+//-------- Paginado ----------//
 
   const [page, setPage] = useState(1);
   const [dogsxPage, setDogsxPage] = useState(8);
@@ -96,7 +96,7 @@ export default function Home() {
           </li>
           <li>
             <Link to="/dogs">
-              <button id="crear">Crear Perro</button>
+              <button id="crear">Create Dog</button>
             </Link>
           </li>
           <li>
@@ -128,8 +128,8 @@ export default function Home() {
               <option value="selected" hidden>
                 Weight
               </option>
-              <option value="desc">Mas Pesados</option>
-              <option value="asc">Mas Livianos</option>
+              <option value="desc">Heavy</option>
+              <option value="asc">Light</option>
             </select>
           </li>
           <li>

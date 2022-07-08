@@ -2,7 +2,7 @@ require('dotenv').config()
 const { YOUR_API_KEY } = process.env
 const { Router } = require('express')
 const router = Router()
-const { Temperament } = require('../db')
+const { Temperament} = require('../db')
 const axios = require('axios')
 
 

@@ -89,16 +89,17 @@ function rootReducer(state = initialState, action) {
             }
 
         case 'ORDER_BY_WEIGHT':
-            const ordereddWeight = action.payload === 'asc' ?
-                state.dogs.sort(function (a, b) {
-                    return parseInt(a.weightMin) - parseInt(b.weightMin)
+            const ordereddWeightfiltered = state.allDogs.filter(e => e.weightMax)
+            const orderedWeight = action.payload === 'asc' ?
+                ordereddWeightfiltered.sort(function (a, b) {
+                    return (a.weightMax) - (b.weightMax)
                 }) :
-                state.dogs.sort(function (a, b) {
-                    return parseInt(b.weightMax) - parseInt(a.weightMax)
+                ordereddWeightfiltered.sort(function (a, b) {
+                    return (b.weightMax) - (a.weightMax)
                 })
             return {
                 ...state,
-                dogs: ordereddWeight,
+                dogs: orderedWeight,
             }
 
         case 'GET_BY_NAME':

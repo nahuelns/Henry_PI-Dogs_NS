@@ -17,7 +17,7 @@ const getAllDogsApi = async (name) => {
                 heightMin: e.height.metric.split(' - ')[0],
                 heightMax: e.height.metric.split(' - ')[1],
                 weightMin: e.weight.metric.split(' - ')[0],
-                weightMax: e.weight.metric.split(' - ')[1],
+                weightMax: parseInt(e.weight.metric.split(' - ')[1]),
                 life_span_min: e.life_span.split(' - ')[0],
                 life_span_max: e.life_span.split(' - ')[1],
                 
