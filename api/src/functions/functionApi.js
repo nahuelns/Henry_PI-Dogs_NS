@@ -20,6 +20,7 @@ const getAllDogsApi = async (name) => {
                 weightMax: parseInt(e.weight.metric.split(' - ')[1]),
                 life_span_min: e.life_span.split(' - ')[0],
                 life_span_max: e.life_span.split(' - ')[1],
+
                 
             }))
             return allDogsFilter;
