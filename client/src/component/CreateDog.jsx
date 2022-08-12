@@ -75,6 +75,8 @@ function validate(input) {
         errors.life_span_min = 'Esperanza de vida min debe ser menor que Esperanza de vida max'
     }
 
+
+
     return errors
 }
 
@@ -112,11 +114,21 @@ export default function CreateDog(){
     }
 
     function handleSelect(e) {
-        
-            setInput({
-                ...input,
-                temperaments: [...input.temperaments, e.target.value]
-            }) 
+            if(!input.temperaments.includes(e.target.value)){
+            
+                    setInput({
+                        ...input,
+                        temperaments: [...input.temperaments, e.target.value]
+                    }) 
+                
+            } else {
+                setInput({
+                    ...input,
+                    temperaments: input.temperaments.filter(e => e !== e.target.value)
+                }) 
+            }
+    console.log(handleSelect()) ;
+           
     }
 
     function handleSubmit(e) {
